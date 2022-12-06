@@ -22,7 +22,7 @@ export default function Form({handleSubmit}) {
 
         return (
             <div className='container'>
-                {/* <h1>Add Dudes Form</hwwww1> */}
+                {/* <h1>Add Dudes Form</hwwwwwwww1> */}
                 <form  onSubmit={onFormSubmit}>
                 <label htmlFor='name'>
                     <input 
