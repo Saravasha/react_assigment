@@ -5,12 +5,14 @@ import PersonTable from './components/PersonTable';
 import Header from './Layout/Header';
 import Footer from './Layout/Footer';
 import SortTable from './components/SortTable';
+import PersonList from './components/PersonList';
+import RemovePerson from './components/RemovePerson';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <PersonTable />
+      {/* <PersonTable /> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -25,7 +27,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <SortTable/>
+      <PersonList/>
+      <RemovePerson/>
+      {/* <SortTable/> */}
       <Footer/>
     </div>
   );
