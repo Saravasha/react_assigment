@@ -23,8 +23,8 @@ export default class RemovePerson extends React.Component {
         return(
             <div> 
                 <form onSubmit={this.handleSubmit}>
-                    <label>Person id:
-                    <input type="text" name="id" onChange={this.handleChange}></input>
+                    <label >Delete a Person&nbsp; 
+                    <input type="number" placeholder="Person Id" name="id" required min={0} onChange={this.handleChange}></input>
                     </label>
                     <button type="submit">Delete</button>
                 </form>
