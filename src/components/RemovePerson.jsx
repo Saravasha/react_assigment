@@ -15,7 +15,8 @@ export default class RemovePerson extends React.Component {
 
         axios.delete(`https://localhost:7094/api/react/${this.state.id}`)
         .then(result => {
-            console.log(result); console.log(result.data);
+            console.log(result); 
+            console.log(result.data);
         })
     }
 
