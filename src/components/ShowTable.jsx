@@ -1,5 +1,5 @@
 import TableBuilder from '../components/TableBuilder';
-import Form from '../components/CreatePerson';
+import Form from './AddPerson';
 import React, {useState} from 'react';
 
 
@@ -23,35 +23,35 @@ export default function ShowTable() {
   }
 
 
-      const {characters} = state;
-      
-    const empty = 0;
+  const {characters} = state;
     
-    if (characters.length !== empty) {
-      return (
-          <div>
-            <div className="container">
-              <p>List ov dudes app.</p>
-              <TableBuilder
-                
-                characterData={characters}
-                removeCharacter={removeCharacter} /> 
-              <h4>Add more Dudes</h4>
-              <Form handleSubmit={handleSubmit} />
-          </div>
-        </div>
-      )} 
-      else { 
-        return ( 
-          <div>
-            <div className="container">
-              <p>There are no dudes, please add some if you wish to view them on the table.</p>
-              <h4>Add a new Dude</h4>
+  const empty = 0;
+  
+  if (characters.length !== empty) {
+    return (
+        <div>
+          <div className="container">
+            <p>List ov dudes app.</p>
+            <TableBuilder
               
-              <Form handleSubmit={handleSubmit} />
-          </div>
+              characterData={characters}
+              removeCharacter={removeCharacter} /> 
+            <h4>Add more Dudes</h4>
+            <Form handleSubmit={handleSubmit} />
         </div>
-        )
-      }
+      </div>
+    )} 
+    else { 
+      return ( 
+        <div>
+          <div className="container">
+            <p>There are no dudes, please add some if you wish to view them on the table.</p>
+            <h4>Add a new Dude</h4>
+            
+            <Form handleSubmit={handleSubmit} />
+        </div>
+      </div>
+      )
     }
+  }
   

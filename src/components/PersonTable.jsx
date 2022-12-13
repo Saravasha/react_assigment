@@ -1,5 +1,5 @@
 import TableBuilder from './TableBuilder';
-import Form from './CreatePerson';
+import Form from './AddPerson';
 import React, {useState} from 'react';
 import TableHandler from './ShowTable';
 

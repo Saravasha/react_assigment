@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
+import Table from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import PersonDetails from "./PersonDetails";
+import PeopleDetails from "./PersonDetails";
+import { Person } from "./Person";
 
-export default class PersonList extends React.Component {
+export default class PeopleList extends React.Component {
     state = {
         people: []
     }
@@ -15,23 +17,23 @@ export default class PersonList extends React.Component {
         axios.get('https://localhost:7094/api/react').then(result => {
             const people = result.data;
             this.setState({people});
-            console.log(people);
+            console.log("people = ",people);
         })
     }
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleChange = (event) => {
 
-        axios.get(`https://localhost:7094/api/react/${this.state.id}`)
+        axios.get(`https://localhost:7094/api/react/`)
         .then(result => {
-            console.log(result); 
-            console.log(result.data);
+            console.log(this.person.id); 
+            console.log(result.data[1]);
+            event.preventDefault();
         })
     }
+
 
     render() { 
         
-
         return( 
         <div className="row">
             <h1>People List</h1>
@@ -47,12 +49,15 @@ export default class PersonList extends React.Component {
             {
                 this.state.people.map((person => 
                     <div className="row" key={person.id}>
+                        <Person key={person.id}/>
                         <p className="col" value={person.id}>{person.id}</p>
                         <p className="col">{person.name}</p>
                         <div className="col">
-                        <button  onClick={this.handleChange} className="btn btn-primary btn-sm" name="id">Details
-                            {/* to={`/PersonDetails/${person.id}`}  */}
-                        </button>
+                            <Link className="btn btn-primary btn-sm" 
+                                  to={`/PersonDetails/${person.id}`} 
+                                  onClick={this.handleChange(person.id)}>Details
+                            </Link> 
+                            <Link to="/Create"></Link>
                         </div>
                     </div>
                 ))

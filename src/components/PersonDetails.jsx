@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import PersonList from "./PersonList";
+import PeopleList from "./PeopleList";
 
 
 export default class PersonDetails extends React.Component {
