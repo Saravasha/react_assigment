@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Table from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
@@ -20,49 +20,29 @@ export default class PeopleList extends React.Component {
             console.log("people = ",people);
         })
     }
-
-    handleChange = (event) => {
-
-        axios.get(`https://localhost:7094/api/react/`)
-        .then(result => {
-            console.log(this.person.id); 
-            console.log(result.data[1]);
-            event.preventDefault();
-        })
-    }
+    
 
 
     render() { 
         
         return( 
-        <div className="row">
+            <div className="container">
             <h1>People List</h1>
-            <div className="col">
-                <b>Id</b>
-            </div>
-            <div className="col">
-                <b>People</b>
-            </div>
-            <div className="col">
-            </div>
-            <div>
-            {
-                this.state.people.map((person => 
-                    <div className="row" key={person.id}>
-                        <Person key={person.id}/>
-                        <p className="col" value={person.id}>{person.id}</p>
-                        <p className="col">{person.name}</p>
-                        <div className="col">
-                            <Link className="btn btn-primary btn-sm" 
-                                  to={`/PersonDetails/${person.id}`} 
-                                  onClick={this.handleChange(person.id)}>Details
-                            </Link> 
-                            <Link to="/Create"></Link>
-                        </div>
-                    </div>
-                ))
-            }
-            </div>
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.people.map((person) => <Person key={person.id} person={person} cityId={person.cityId}></Person> )}
+                </tbody>
+            </Table>
+            <Link to="/Create">
+                <button>Create New Person</button>
+            </Link>
         </div>
         ) 
     }

@@ -14,9 +14,9 @@ root.render(
 {/* <UserContext.Provider value={user.username}> */}
 
 
-<BrowserRouter>
+{/* <BrowserRouter>
+        </BrowserRouter> */}
     <App />
-        </BrowserRouter>
 {/* </UserContext.Provider> */}
   </React.StrictMode>
 );

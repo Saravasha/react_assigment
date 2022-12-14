@@ -9,7 +9,7 @@ export function Person(props) {
 
         console.log(props);
 
-        await axios.delete(`'https://localhost:7094/api/react'/${props}`)
+        await axios.delete(`https://localhost:7094/api/react/${props}`)
         .then(response => response.data)
 
     }
@@ -17,7 +17,7 @@ export function Person(props) {
     return (
         <tr>
             <td>
-                <p>{props.name}</p>
+                <p>{person.name}</p>
             </td>
             <td>
                 <p>{person.age}</p>
