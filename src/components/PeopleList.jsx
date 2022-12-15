@@ -32,12 +32,12 @@ export default class PeopleList extends React.Component {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>City Id</th>
+                        <th>Phone Number</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.people.map((person) => <Person key={person.id} person={person} cityId={person.cityId}></Person> )}
+                    {this.state.people.map((person) => <Person key={person.id} person={person}></Person> )}
                 </tbody>
             </Table>
             <Link to="/Create">

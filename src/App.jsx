@@ -1,12 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import TableBuilder from './components/TableBuilder';
-import PersonTable from './components/PersonTable';
 import Header from './Layout/Header';
 
-import { BrowserRouter as Router, Link,  Switch, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from './Layout/Footer';
-import SortTable from './components/SortTable';
 import PeopleList from './components/PeopleList';
 import RemovePerson from './components/RemovePerson';
 import React from 'react';
@@ -21,9 +17,9 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
-        <Route path="/" exact element={<PeopleList/>}/>
-        <Route path="/Create" element={<AddPerson/>}/>
-        <Route path="/PeopleDetails/id:" component={<PersonDetails/>} />
+        <Route  path="/" element={<PeopleList/>}/>
+        <Route  path="/Create" element={<AddPerson/>}/>
+        <Route  path="/PeopleDetails/id:" component={<PersonDetails/>} />
         </Routes>
       </Router>
       

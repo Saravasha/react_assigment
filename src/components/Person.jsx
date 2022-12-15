@@ -20,7 +20,7 @@ export function Person(props) {
                 <p>{person.name}</p>
             </td>
             <td>
-                <p>{person.age}</p>
+                <p>{person.phoneNumber}</p>
             </td>
             <td>
                 <button onClick={() => DeletePerson(person.id)}>Delete</button>
