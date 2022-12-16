@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './Layout/Header';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './Layout/Footer';
 import PeopleList from './components/PeopleList';
 import RemovePerson from './components/RemovePerson';
@@ -15,13 +15,13 @@ export default function App() {
 
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Routes>
-        <Route  path="/" element={<PeopleList/>}/>
-        <Route  path="/Create" element={<AddPerson/>}/>
-        <Route  path="/PeopleDetails/id:" component={<PersonDetails/>} />
+        <Route path="/" element={<PeopleList/>}/>
+        <Route path="/Create" element={<AddPerson/>}/>
+        <Route path="/PersonDetails/:id" element={<PersonDetails/>} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       
       <Header/>
       <RemovePerson/>

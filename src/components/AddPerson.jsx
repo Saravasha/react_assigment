@@ -57,7 +57,6 @@ export default function AddPerson() {
                 <label>Phone Number: </label>
                 <input type="text" name="phonenumber" placeholder='Phone Number' onChange={handleChange} required />
                 <label>City Id: </label>
-                {/* <input type="text" name="cityid" placeholder='City Id' onChange={handleChange} required /> */}
                 <select type="text" name="cityid" required defaultValue={"default"} onChange={handleChange}>
                     <option disabled value={"default"}>Select City</option>
                     {cities.map((city) => <option key={city.value} value={city.value}>{city.text}</option>)}  
