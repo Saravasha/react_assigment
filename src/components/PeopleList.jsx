@@ -7,6 +7,9 @@ import { useHistory } from 'react-router-dom';
 import PersonDetails from "./PersonDetails";
 import { Person } from "./Person";
 
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-headless-accordion";
+
+
 export default class PeopleList extends React.Component {
     state = {
         people: []
@@ -14,7 +17,7 @@ export default class PeopleList extends React.Component {
 
 
     componentDidMount() {
-        axios.get('https://localhost:7094/api/react').then(result => {
+        axios.get('https://localhost:7094/api/react/person/').then(result => {
             const people = result.data;
             this.setState({ people });
             console.log("people = ", people);
@@ -27,22 +30,30 @@ export default class PeopleList extends React.Component {
 
         return (
             <div className="container">
-                <h1>People List</h1>
-                <Table striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Phone Number</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.people.map((person) => <Person key={person.id} person={person}></Person>)}
-                    </tbody>
-                </Table>
-                <Link to="/Create">
-                    <button>Create New Person</button>
-                </Link>
+
+                {/* header */}
+                <div className="col">
+                    <h1>People List</h1>
+                </div>
+                <div className="row">
+
+                    {this.state.people.map((person) =>
+                        <Accordion key={person.id}>
+                            <AccordionItem>
+                                <AccordionHeader className={`accordion-header col-lg-2 col-md-4 btn border-secondary`}>
+                                    <div>{person.name}</div>
+                                </AccordionHeader>
+                                <AccordionBody className={`accordion-title`}>
+                                    <Person key={person.id} person={person}></Person>
+                                </AccordionBody>
+                            </AccordionItem>
+                        </Accordion>
+                    )}
+                    <ol>
+                    </ol>
+                </div>
+
+                <Link className="btn btn-primary" to="/Create">Create New Person</Link>
             </div>
         )
     }
