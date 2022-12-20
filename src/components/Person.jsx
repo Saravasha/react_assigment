@@ -8,42 +8,65 @@ import { useNavigate } from 'react-router';
 
 export function Person(props) {
 
-    const navigate = useNavigate()
     const person = props.person
+    const navigate = useNavigate()
 
     async function DeletePerson(props) {
 
         console.log("props = ", props);
 
         await axios.delete(`https://localhost:7094/api/react/${props}`)
-            .then(response => response.data).then(getData())
+            .then(response => response.data)
 
     }
 
-    function getData() {
-        axios.get(`https://localhost:7094/api/react/person`)
-            .then(result => {
-                setCities(result.data);
-                console.log("cities = ", cities)
-            })
-    }
-
+    // const [zigiplz, setZigiplz] = useState([])
+    // const [personList, setPersonList] = useState([])
+    const [cities, setCities] = useState(
+        {
+            id: 0,
+            country: '',
+            countryId: 0,
+            countryName: '',
+            people: [],
+        }
+    );
     let mounted = true
-    const [cities, setCities] = useState([]);
     useEffect(() => {
-        // function getData() {
-        //     axios.get(`https://localhost:7094/api/react/person`)
-        //         .then(result => {
-        //             setCities(result.data);
-        //             console.log("cities = ", cities)
-        //         })
-        // }
+        function getData() {
+            axios.get(`https://localhost:7094/api/react/person`,)
+            .then(result => {
+                const cities = result.data
+                // setZigiplz(zigiplz);
+                setCities(cities);
+                console.log("cities = ", cities)
+                // setPersonList(person)
+                // console.log("personList = ", personList)
+                
+                //     setPersonList({zigiplz, ...personList, ...cities})
+                //     console.log("plist", personList);
+            })
+        }
         getData();
-        return () => (mounted = false)
-    }, [])
+        
+            
+            
+            return () => (mounted = false)
+        }, [])
+        
+    // setPersonList({
+    //     name: this.state.name,
+    //     phonenumber: this.state.phonenumber,
+    //     cityid: this.state.city.value
+    // });
 
-
-
+    
+            
+        
+        // console.log("zigiplzwww = ",zigiplz);
+    console.log("citieswww = ",cities);
+    // console.log("personwww = ",person);
+    
     return (
         <div className='container'>
             <div className='row'>
@@ -62,7 +85,7 @@ export function Person(props) {
                     <p>{person.phoneNumber}</p>
                 </div>
                 <div className='col'>
-                    <p>{person.cityId}</p>
+                    <div>{cities.countryName}</div>
                 </div>
                 <div className='col'>
                     <Link  to={`/PersonDetails/${person.id}`} key={person.id} person={person}>{person.name}</Link>
