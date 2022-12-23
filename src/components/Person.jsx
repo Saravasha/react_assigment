@@ -22,37 +22,29 @@ export function Person(props) {
 
     // const [zigiplz, setZigiplz] = useState([])
     // const [personList, setPersonList] = useState([])
-    const [cities, setCities] = useState(
-        {
-            id: 0,
-            country: '',
-            countryId: 0,
-            countryName: '',
-            people: [],
-        }
-    );
-    let mounted = true
-    useEffect(() => {
-        function getData() {
-            axios.get(`https://localhost:7094/api/react/person`,)
-            .then(result => {
-                const cities = result.data
-                // setZigiplz(zigiplz);
-                setCities(cities);
-                console.log("cities = ", cities)
-                // setPersonList(person)
-                // console.log("personList = ", personList)
-                
-                //     setPersonList({zigiplz, ...personList, ...cities})
-                //     console.log("plist", personList);
-            })
-        }
-        getData();
+    const [cities, setCities] = useState([]);
+    axios.get(`https://localhost:7094/api/react/person`)
+    .then(result => {
+        const cities = result.data
+        // setZigiplz(zigiplz);
+        setCities(cities);
+        console.log("cities = ", cities)
+        // setPersonList(person)
+        // console.log("personList = ", personList)
         
+        //     setPersonList({zigiplz, ...personList, ...cities})
+        //     console.log("plist", personList);
+    })
+    
+    
+        
+    // useEffect(() => {
+        // function getData() {
+            // let mounted = true
             
-            
-            return () => (mounted = false)
-        }, [])
+        //     getData();
+        //     return () => (mounted = false)
+        // }, [])
         
     // setPersonList({
     //     name: this.state.name,
@@ -64,7 +56,7 @@ export function Person(props) {
             
         
         // console.log("zigiplzwww = ",zigiplz);
-    console.log("citieswww = ",cities);
+    // console.log("citieswww = ",cities);
     // console.log("personwww = ",person);
     
     return (
@@ -85,7 +77,7 @@ export function Person(props) {
                     <p>{person.phoneNumber}</p>
                 </div>
                 <div className='col'>
-                    <div>{cities.countryName}</div>
+                    {/* <div>{cities.countryName}</div> */}
                 </div>
                 <div className='col'>
                     <Link  to={`/PersonDetails/${person.id}`} key={person.id} person={person}>{person.name}</Link>
