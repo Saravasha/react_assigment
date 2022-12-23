@@ -4,10 +4,10 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import PersonDetails from "./PersonDetails";
-import { Person } from "./Person";
+import  Person from "./Person";
 
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-headless-accordion";
+import SortPeopleList from "./SortPeopleList";
 
 
 export default class PeopleList extends React.Component {
@@ -15,22 +15,20 @@ export default class PeopleList extends React.Component {
         people: []
     }
 
-
     componentDidMount() {
         axios.get('https://localhost:7094/api/react/person/').then(result => {
             const people = result.data;
             this.setState({ people });
             console.log("people = ", people);
         })
+
+
     }
-
-
 
     render() {
 
         return (
             <div className="container">
-
                 {/* header */}
                 <div className="col">
                     <h1>People List</h1>
@@ -45,6 +43,7 @@ export default class PeopleList extends React.Component {
                                 </AccordionHeader>
                                 <AccordionBody className={`accordion-title`}>
                                     <Person key={person.id} person={person}></Person>
+                                    {/* <SortPeopleList person={person}></SortPeopleList> */}
                                 </AccordionBody>
                             </AccordionItem>
                         </Accordion>
@@ -52,7 +51,6 @@ export default class PeopleList extends React.Component {
                     <ol>
                     </ol>
                 </div>
-
                 <Link className="btn btn-primary" to="/Create">Create New Person</Link>
             </div>
         )

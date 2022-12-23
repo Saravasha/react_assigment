@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import PersonDetails from './PersonDetails';
 import { Link, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import PeopleList from './PeopleList';
 
-export function Person(props) {
+export default function Person(props) {
 
     const person = props.person
-    const navigate = useNavigate()
+    // const navigate = useNavigate();
 
     async function DeletePerson(props) {
 
@@ -20,45 +20,21 @@ export function Person(props) {
 
     }
 
-    // const [zigiplz, setZigiplz] = useState([])
-    // const [personList, setPersonList] = useState([])
     const [cities, setCities] = useState([]);
-    axios.get(`https://localhost:7094/api/react/person`)
-    .then(result => {
-        const cities = result.data
-        // setZigiplz(zigiplz);
-        setCities(cities);
-        console.log("cities = ", cities)
-        // setPersonList(person)
-        // console.log("personList = ", personList)
+    let mounted = true
+    useEffect(() => {
+        function getData() {
+            axios.get(`https://localhost:7094/api/react/person`)
+            .then(result => {
+                const cities = result.data
+                setCities(cities);
+            })
+        }
+        getData();
         
-        //     setPersonList({zigiplz, ...personList, ...cities})
-        //     console.log("plist", personList);
-    })
-    
-    
+            return () => (mounted = false)
+        }, [])
         
-    // useEffect(() => {
-        // function getData() {
-            // let mounted = true
-            
-        //     getData();
-        //     return () => (mounted = false)
-        // }, [])
-        
-    // setPersonList({
-    //     name: this.state.name,
-    //     phonenumber: this.state.phonenumber,
-    //     cityid: this.state.city.value
-    // });
-
-    
-            
-        
-        // console.log("zigiplzwww = ",zigiplz);
-    // console.log("citieswww = ",cities);
-    // console.log("personwww = ",person);
-    
     return (
         <div className='container'>
             <div className='row'>
@@ -66,8 +42,7 @@ export function Person(props) {
                 <b className='col'>Phone Number</b>
                 <b className='col'>Residence (City)</b>
                 <b className='col'>Country</b>
-                <b className='col'>w</b>
-                <b className='col'>d</b>
+                <b className='col'></b>
             </div>
             <div className='row'>
                 <div className='col'>
@@ -77,14 +52,13 @@ export function Person(props) {
                     <p>{person.phoneNumber}</p>
                 </div>
                 <div className='col'>
-                    {/* <div>{cities.countryName}</div> */}
+                    <p>{person.city.name}</p>
                 </div>
                 <div className='col'>
-                    <Link  to={`/PersonDetails/${person.id}`} key={person.id} person={person}>{person.name}</Link>
+                    <p>{person.city.country.name}</p>
                 </div>
-                <div className='col'></div>
                 <div className='col'>
-                    <button className="btn btn-danger" onClick={() => DeletePerson(person.id)}>Delete</button>
+                    <button className="btn btn-danger btn-sm" onClick={() => DeletePerson(person.id)}>Delete</button>
                 </div>
             </div>
         </div>

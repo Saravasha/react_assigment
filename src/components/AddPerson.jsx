@@ -42,9 +42,10 @@ export default function AddPerson() {
         });
     }
 
-    function CreatePerson() {
+    async function CreatePerson() {
         console.log(person)
-        axios.post(`https://localhost:7094/api/react/create`, person).then(response => response.status
+        await axios.post(`https://localhost:7094/api/react/create`, person).then(response => response.status 
+        // console.log(response.status);}
         )
         navigate('/')
     }

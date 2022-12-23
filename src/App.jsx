@@ -7,7 +7,8 @@ import RemovePerson from './components/RemovePerson';
 import React from 'react';
 import AddPerson from './components/AddPerson'
 
-import PersonDetails from './components/PersonDetails';
+import SortPeopleList from './components/SortPeopleList';
+import { useNavigate } from 'react-router-dom';
 
 export default function App() {
 
@@ -17,14 +18,15 @@ export default function App() {
         <Routes>
         <Route path="/" element={<PeopleList/>}/>
         <Route path="/person" element={<PeopleList/>}/>
+        {/* <Route path="/" element={<SortPeopleList/>}/> */}
         <Route path="/Create" element={<AddPerson/>}/>
-        <Route path="/PersonDetails/:id" element={<PersonDetails/>} />
         </Routes>
-      </BrowserRouter>
+      <SortPeopleList/>
       
       <Header/>
-      <RemovePerson/>
+      {/* <RemovePerson/> */}
       <Footer/>
+      </BrowserRouter>
     </div>
   );
 }
