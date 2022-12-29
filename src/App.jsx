@@ -16,12 +16,13 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={<PeopleList/>}/>
+        {/* <Route path="/" element={<PeopleList/>}/> */}
         <Route path="/person" element={<PeopleList/>}/>
-        {/* <Route path="/" element={<SortPeopleList/>}/> */}
+        <Route path="/" element={<SortPeopleList/>}/>
         <Route path="/Create" element={<AddPerson/>}/>
         </Routes>
-      <SortPeopleList/>
+
+        {/* <SortPeopleList/> */}
       
       <Header/>
       {/* <RemovePerson/> */}

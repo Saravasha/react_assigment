@@ -43,7 +43,6 @@ export default class PeopleList extends React.Component {
                                 </AccordionHeader>
                                 <AccordionBody className={`accordion-title`}>
                                     <Person key={person.id} person={person}></Person>
-                                    {/* <SortPeopleList person={person}></SortPeopleList> */}
                                 </AccordionBody>
                             </AccordionItem>
                         </Accordion>
