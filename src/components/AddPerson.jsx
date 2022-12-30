@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import Async, { useAsync } from 'react-select/async';
 
 export default function AddPerson() {
 

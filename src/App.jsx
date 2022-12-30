@@ -9,6 +9,7 @@ import AddPerson from './components/AddPerson'
 
 import SortPeopleList from './components/SortPeopleList';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -17,15 +18,14 @@ export default function App() {
       <BrowserRouter>
         <Routes>
         {/* <Route path="/" element={<PeopleList/>}/> */}
-        <Route path="/person" element={<PeopleList/>}/>
-        <Route path="/" element={<SortPeopleList/>}/>
-        <Route path="/Create" element={<AddPerson/>}/>
+        <Route path="/" element={<PeopleList/>}/>
+        {/* <Route path="/" element={<SortPeopleList/>}/> */}
+        <Route path="/create" element={<AddPerson/>}/>
         </Routes>
 
-        {/* <SortPeopleList/> */}
-      
+
       <Header/>
-      {/* <RemovePerson/> */}
+      {/* <PeopleList/> */}
       <Footer/>
       </BrowserRouter>
     </div>
